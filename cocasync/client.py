@@ -219,7 +219,7 @@ class Player(Box):
         try:
             league = self.league
         except AttributeError:
-            raise MissingData('league')
+            return None
         league = Box(league)
         league = League(league)
         return league
@@ -228,7 +228,7 @@ class Player(Box):
         try:
             clan = self.clan
         except AttributeError:
-            raise MissingData('clan')
+            return None
         clan = Box(clan)
         clan = Clan(clan)
         return clan
@@ -237,7 +237,7 @@ class Player(Box):
         try:
             ls = self.legendStatistics
         except AttributeError:
-            raise MissingData('legendStatistics')
+            return None
         ls = Box(ls)
         ls = LegendStatistics(ls)
         return ls
@@ -270,7 +270,7 @@ class Player(Box):
         try:
             hero = self.heroes
         except AttributeError:
-            raise MissingData('heroes')
+            return None
         heroes = []
         for i in hero:
             temp = Box(hero[i])
@@ -282,7 +282,7 @@ class Player(Box):
         try:
             spell = self.spells
         except AttributeError:
-            raise MissingData('spells')
+            return None
         spells = []
         for i in spell:
             temp = Box(spell[i])
@@ -393,7 +393,7 @@ class RankedPlayer(Box):
         try:
             league = self.league
         except AttributeError:
-            raise MissingData('league')
+            return None
         league = Box(league)
         league = League(league)
         return league
@@ -402,7 +402,7 @@ class RankedPlayer(Box):
         try:
             clan = self.clan
         except AttributeError:
-            raise MissingData('clan')
+            return None
         clan = Box(clan)
         clan = Clan(clan)
         return clan
@@ -411,7 +411,7 @@ class RankedPlayer(Box):
         try:
             ls = self.legendStatistics
         except AttributeError:
-            raise MissingData('legendStatistics')
+            return None
         ls = Box(ls)
         ls = LegendStatistics(ls)
         return ls
@@ -444,7 +444,7 @@ class RankedPlayer(Box):
         try:
             hero = self.heroes
         except AttributeError:
-            raise MissingData('heroes')
+            return None
         heroes = []
         for i in hero:
             temp = Box(hero[i])
@@ -456,7 +456,7 @@ class RankedPlayer(Box):
         try:
             spell = self.spells
         except AttributeError:
-            raise MissingData('spells')
+            return None
         spells = []
         for i in spell:
             temp = Box(spell[i])
