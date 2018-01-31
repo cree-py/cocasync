@@ -29,7 +29,7 @@ class Client:
 
         tag = tag.strip("#")
         tag = tag.upper()
-        if not check_tag(tag):
+        if not self.check_tag(tag):
             raise InvalidArg('tag')
 
         try:
@@ -149,7 +149,7 @@ class Client:
 
         tag = tag.strip("#")
         tag = tag.upper()
-        if not check_tag(tag):
+        if not self.check_tag(tag):
             raise InvalidArg('tag')
 
         try:
