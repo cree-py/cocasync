@@ -249,7 +249,7 @@ class Player(Box):
             raise MissingData('achievements')
         acs = []
         for i in ac:
-            tempac = Box(ac[i])
+            tempac = Box(i)
             tempac = Achievement(tempac)
             acs.append(tempac)
         return acs
@@ -261,7 +261,7 @@ class Player(Box):
             raise MissingData('troops')
         troops = []
         for i in troop:
-            temp = Box(troop[i])
+            temp = Box(i)
             temp = Troop(temp)
             troops.append(temp)
         return troops
@@ -273,7 +273,7 @@ class Player(Box):
             return None
         heroes = []
         for i in hero:
-            temp = Box(hero[i])
+            temp = Box(i)
             temp = Hero(temp)
             heroes.append(temp)
         return heroes
@@ -285,7 +285,7 @@ class Player(Box):
             return None
         spells = []
         for i in spell:
-            temp = Box(spell[i])
+            temp = Box(i)
             temp = Spell(temp)
             spells.append(temp)
         return spells
@@ -328,7 +328,7 @@ class Clan(Box):
             raise MissingData('memberList')
         members = []
         for i in memberList:
-            temp = Box(memberList[i])
+            temp = Box(i)
             temp = Player(temp)
             members.append(temp)
         return members
@@ -423,7 +423,7 @@ class RankedPlayer(Box):
             raise MissingData('achievements')
         acs = []
         for i in ac:
-            tempac = Box(ac[i])
+            tempac = Box(i)
             tempac = Achievement(tempac)
             acs.append(tempac)
         return acs
@@ -435,7 +435,7 @@ class RankedPlayer(Box):
             raise MissingData('troops')
         troops = []
         for i in troop:
-            temp = Box(troop[i])
+            temp = Box(i)
             temp = Troop(temp)
             troops.append(temp)
         return troops
@@ -447,7 +447,7 @@ class RankedPlayer(Box):
             return None
         heroes = []
         for i in hero:
-            temp = Box(hero[i])
+            temp = Box(i)
             temp = Hero(temp)
             heroes.append(temp)
         return heroes
@@ -459,7 +459,7 @@ class RankedPlayer(Box):
             return None
         spells = []
         for i in spell:
-            temp = Box(spell[i])
+            temp = Box(i)
             temp = Spell(temp)
             spells.append(temp)
         return spells
