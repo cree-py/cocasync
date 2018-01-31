@@ -17,12 +17,6 @@ class Client:
     def __del__(self):
         self.session.close()
 
-    def check_tag(self, tag):
-        for char in tag:
-            if char.upper() not in '0289PYLQGRJCUV':
-                return False
-        return True
-
     async def getPlayer(self, tag=None):
         if tag is None:
             raise MissingArg('tag')
