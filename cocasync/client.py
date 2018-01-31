@@ -88,7 +88,7 @@ class Client:
                     raise Error()
         except asyncio.TimeoutError:
             raise Timeout()
-        thing = data.items # sorry
+        thing = data['items'] # sorry
         seasons = []
         for i in range(len(thing)):
             temp = Box(thing[i])
@@ -107,7 +107,7 @@ class Client:
                     raise Error()
         except asyncio.TimeoutError:
             raise Timeout()
-        thing = data.items # sorry
+        thing = data['items'] # sorry
         rankings = []
         for i in range(len(thing)):
             temp = Box(thing[i])
@@ -127,7 +127,7 @@ class Client:
         except asyncio.TimeoutError:
             raise Timeout()
 
-        thing = data.items # sorry
+        thing = data['items'] # sorry
         locations = []
         for i in range(len(thing)):
             temp = Box(thing[i])
@@ -170,7 +170,7 @@ class Client:
                     raise Error()
         except asyncio.TimeoutError:
             raise Timeout()
-        thing = data.items # sorry
+        thing = data['items'] # sorry
         members = []
         for i in range(len(thing)):
             temp = Box(thing[i])
@@ -189,7 +189,7 @@ class Client:
                     raise Error()
         except asyncio.TimeoutError:
             raise Timeout()
-        thing = data.items # sorry
+        thing = data['items'] # sorry
         logItems = []
         for i in range(len(thing)):
             temp = Box(thing[i])
