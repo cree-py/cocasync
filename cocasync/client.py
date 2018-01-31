@@ -26,7 +26,12 @@ class Client:
 
         try:
             async with self.session.get(f'{self.baseUrl}players/%23{tag}', timeout=self.timeout, headers=self.headers) as resp:
-                data = await resp.json()
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
         except asyncio.TimeoutError:
             raise Timeout()
         except Exception:
@@ -210,8 +215,8 @@ class Client:
 
 class Player(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, player):
+        self.player = player
 
     async def getLeague(self):
         try:
@@ -290,8 +295,8 @@ class Player(Box):
 
 class League(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, league):
+        self.league = league
 
     async def getIcons(self):
         try:
@@ -304,8 +309,8 @@ class League(Box):
 
 class Clan(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, clan):
+        self.clan = clan
 
     async def getLocation(self):
         try:
@@ -339,8 +344,8 @@ class Clan(Box):
 
 class LegendStatistics(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, ls):
+        self.legendStatistics = ls
 
     async def getCurrentSeason(self):
         try:
@@ -371,48 +376,48 @@ class LegendStatistics(Box):
 
 class Achievement(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, achievement):
+        self.achievement = achievement
 
 class Troop(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, troop):
+        self.troop = troop
 
 class Hero(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, hero):
+        self.hero = hero
 
 class Spell(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, spell):
+        self.spell = spell
 
 class UrlList(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, urls):
+        self.urls = urls
 
 class Location(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, location):
+        self.location = location
 
 class SeasonStatistic(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, seasonStatistic):
+        self.seasonStatistic = seasonStatistic
 
 class GenericIDObject(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, generic):
+        self.genericID = generic
 
 class RankedPlayer(Box):
     # Not sure how inheritence works in python so won't risk it
-    def __init__(self):
-        pass
+    def __init__(self, player):
+        self.player = player
 
     async def getLeague(self):
         try:
@@ -491,8 +496,8 @@ class RankedPlayer(Box):
 
 class WarlogItem(Box):
 
-    def __init__(self):
-        pass
+    def __init__(self, item):
+        self.item = item
 
     async def getHomeClan(self):
         try:
