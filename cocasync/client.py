@@ -167,7 +167,6 @@ class Client:
         clan = Clan(data)
         return clan
 
-    # TODO Clan members
     async def getClanMembers(self, clantag):
         try:
             async with self.session.get(f'{self.baseUrl}clans/{clantag}/members', timeout=self.timeout, headers=self.headers) as resp:
@@ -183,13 +182,44 @@ class Client:
         members = []
         for i in thing:
             temp = Box(thing[i])
-            members = Player(temp)
+            temp = Player(temp)
             members.append(temp)
         return members
 
-    # TODO Clan warlog
+    async def getClanWarlog(self, clantag):
+        try:
+            async with self.session.get(f'{self.baseUrl}clans/{clantag}/warlog', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+        thing = data.items # sorry
+        logItems = []
+        for i in thing:
+            temp = Box(thing[i])
+            temp = WarlogItem(temp)
+            logItems.append(temp)
+        return logItems
 
-    # TODO Clan currentwar
+    async def getClanWar(self, clantag):
+        try:
+            async with self.session.get(f'{self.baseUrl}clans/{clantag}/currentwar', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+
+        data = Box(data)
+        war = WarlogItem(data)
+        return war
 
 class Player(Box):
 
@@ -471,3 +501,26 @@ class RankedPlayer(Box):
             temp = Spell(temp)
             spells.append(temp)
         return spells
+
+class WarlogItem(Box):
+
+    def __init__(self):
+        pass
+
+    async def getHomeClan(self):
+        try:
+            clan = self.clan
+        except AttributeError:
+            raise MissingData('clan')
+        clan = Box(clan)
+        clan = Clan(clan)
+        return clan
+
+    async def getOpponentClan(self):
+        try:
+            clan = self.opponent
+        except AttributeError:
+            raise MissingData('opponent')
+        clan = Box(clan)
+        clan = Clan(clan)
+        return clan
