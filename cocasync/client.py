@@ -83,6 +83,25 @@ class Client:
         league = League(data)
         return league
 
+    async def getLeagueSeasons(self, league):
+        try:
+            async with self.session.get(f'{self.baseUrl}leagues/{league}/seasons', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+        thing = data.items # sorry
+        seasons = []
+        for i in thing:
+            temp = Box(thing[i])
+            temp = GenericIDObject(temp)
+            seasons.append(temp)
+        return seasons
+        
     # TODO implement League seasons data
 
     async def getLocations(self):
@@ -324,6 +343,11 @@ class Location(Box):
         pass
 
 class SeasonStatistic(Box):
+
+    def __init__(self):
+        pass
+
+class GenericIDObject(Box):
 
     def __init__(self):
         pass
