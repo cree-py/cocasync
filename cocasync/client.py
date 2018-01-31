@@ -101,8 +101,25 @@ class Client:
             temp = GenericIDObject(temp)
             seasons.append(temp)
         return seasons
-        
-    # TODO implement League seasons data
+
+    async def getLeagueSeasonRankings(self, league, season):
+        try:
+            async with self.session.get(f'{self.baseUrl}leagues/{league}/seasons/{season}', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+        thing = data.items # sorry
+        rankings = []
+        for i in thing:
+            temp = Box(thing[i])
+            rankings = RankedPlayer(temp)
+            rankings.append(temp)
+        return rankings
 
     async def getLocations(self):
         try:
@@ -150,6 +167,11 @@ class Client:
         clan = Clan(data)
         return clan
 
+        # TODO Clan members
+
+        # TODO Clan warlog
+
+        # TODO Clan currentwar
 
 class Player(Box):
 
@@ -351,3 +373,83 @@ class GenericIDObject(Box):
 
     def __init__(self):
         pass
+
+class RankedPlayer(Box):
+    # Not sure how inheritence works in python so won't risk it
+    def __init__(self):
+        pass
+
+    async def getLeague(self):
+        try:
+            league = self.league
+        except AttributeError:
+            raise MissingData('league')
+        league = Box(league)
+        league = League(league)
+        return league
+
+    async def getClan(self):
+        try:
+            clan = self.clan
+        except AttributeError:
+            raise MissingData('clan')
+        clan = Box(clan)
+        clan = Clan(clan)
+        return clan
+
+    async def getLegendStatistics(self):
+        try:
+            ls = self.legendStatistics
+        except AttributeError:
+            raise MissingData('legendStatistics')
+        ls = Box(ls)
+        ls = LegendStatistics(ls)
+        return ls
+
+    async def getAchievements(self):
+        try:
+            ac = self.achievements # i can't spell
+        except AttributeError:
+            raise MissingData('achievements')
+        acs = []
+        for i in ac:
+            tempac = Box(ac[i])
+            tempac = Achievement(tempac)
+            acs.append(tempac)
+        return acs
+
+    async def getTroops(self):
+        try:
+            troop = self.troops
+        except AttributeError:
+            raise MissingData('troops')
+        troops = []
+        for i in troop:
+            temp = Box(troop[i])
+            temp = Troop(temp)
+            troops.append(temp)
+        return troops
+
+    async def getHeroes(self):
+        try:
+            hero = self.heroes
+        except AttributeError:
+            raise MissingData('heroes')
+        heroes = []
+        for i in hero:
+            temp = Box(hero[i])
+            temp = Hero(temp)
+            heroes.append(temp)
+        return heroes
+
+    async def getSpells(self):
+        try:
+            spell = self.spells
+        except AttributeError:
+            raise MissingData('spells')
+        spells = []
+        for i in spell:
+            temp = Box(spell[i])
+            temp = Spell(temp)
+            spells.append(temp)
+        return spells
