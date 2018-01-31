@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: cocasync
+Version: 0.0.2
+Summary: An async Python API wrapper for the COC API
+Home-page: https://github.com/cree-py/cocasync
+Author: Umbresp
+Author-email: creepy.org3301@gmail.com
+License: MIT
+Description: async python wrapper for the COC API. Also, we don't yet have a good description so this empty page will have to do.
+Keywords: coc clash-of-clans clash clans cocasync api-wrapper async
+Platform: UNKNOWN

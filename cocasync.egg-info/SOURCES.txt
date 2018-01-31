@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+cocasync/__init__.py
+cocasync/client.py
+cocasync/errors.py
+cocasync.egg-info/PKG-INFO
+cocasync.egg-info/SOURCES.txt
+cocasync.egg-info/dependency_links.txt
+cocasync.egg-info/requires.txt
+cocasync.egg-info/top_level.txt
