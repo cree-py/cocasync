@@ -215,9 +215,6 @@ class Client:
 
 class Player(Box):
 
-    def __init__(self, player):
-        self.player = player
-
     async def getLeague(self):
         try:
             league = self.league
@@ -295,9 +292,6 @@ class Player(Box):
 
 class League(Box):
 
-    def __init__(self, league):
-        self.league = league
-
     async def getIcons(self):
         try:
             iconUrls = self.iconUrls
@@ -308,9 +302,6 @@ class League(Box):
         return iconUrls
 
 class Clan(Box):
-
-    def __init__(self, clan):
-        self.clan = clan
 
     async def getLocation(self):
         try:
@@ -344,9 +335,6 @@ class Clan(Box):
 
 class LegendStatistics(Box):
 
-    def __init__(self, ls):
-        self.legendStatistics = ls
-
     async def getCurrentSeason(self):
         try:
             currentSeason = self.currentSeason
@@ -375,49 +363,31 @@ class LegendStatistics(Box):
         return bestSeason
 
 class Achievement(Box):
-
-    def __init__(self, achievement):
-        self.achievement = achievement
+    pass
 
 class Troop(Box):
-
-    def __init__(self, troop):
-        self.troop = troop
+    pass
 
 class Hero(Box):
-
-    def __init__(self, hero):
-        self.hero = hero
+    pass
 
 class Spell(Box):
-
-    def __init__(self, spell):
-        self.spell = spell
+    pass
 
 class UrlList(Box):
-
-    def __init__(self, urls):
-        self.urls = urls
+    pass
 
 class Location(Box):
-
-    def __init__(self, location):
-        self.location = location
+    pass
 
 class SeasonStatistic(Box):
-
-    def __init__(self, seasonStatistic):
-        self.seasonStatistic = seasonStatistic
+    pass
 
 class GenericIDObject(Box):
-
-    def __init__(self, generic):
-        self.genericID = generic
+    pass
 
 class RankedPlayer(Box):
     # Not sure how inheritence works in python so won't risk it
-    def __init__(self, player):
-        self.player = player
 
     async def getLeague(self):
         try:
@@ -495,9 +465,6 @@ class RankedPlayer(Box):
         return spells
 
 class WarlogItem(Box):
-
-    def __init__(self, item):
-        self.item = item
 
     async def getHomeClan(self):
         try:
