@@ -38,7 +38,7 @@ class Client:
             raise InvalidArg('tag')
 
         data = Box(data)
-        player = Player(data)
+        player = Player(data.player)
         return player
 
     async def getLeagues(self):
@@ -74,7 +74,7 @@ class Client:
             raise Timeout()
 
         data = Box(data)
-        league = League(data)
+        league = League(data.league)
         return league
 
     async def getLeagueSeasons(self, league):
@@ -156,7 +156,7 @@ class Client:
             raise Timeout()
 
         data = Box(data)
-        clan = Clan(data)
+        clan = Clan(data.clan)
         return clan
 
     async def getClanMembers(self, clantag):
@@ -210,13 +210,13 @@ class Client:
             raise Timeout()
 
         data = Box(data)
-        war = WarlogItem(data)
+        war = WarlogItem(data.war)
         return war
 
 class Player(Box):
 
     def __init__(self, player):
-        self.player = player.player
+        self.player = player
 
     async def getLeague(self):
         try:
