@@ -216,7 +216,7 @@ class Client:
 class Player(Box):
 
     def __init__(self, player):
-        self.player = player
+        self.player = player.player
 
     async def getLeague(self):
         try:
