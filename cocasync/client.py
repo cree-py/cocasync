@@ -90,7 +90,7 @@ class Client:
             raise Timeout()
         thing = data.items # sorry
         seasons = []
-        for i in thing:
+        for i in range(len(thing)):
             temp = Box(thing[i])
             temp = GenericIDObject(temp)
             seasons.append(temp)
@@ -109,7 +109,7 @@ class Client:
             raise Timeout()
         thing = data.items # sorry
         rankings = []
-        for i in thing:
+        for i in range(len(thing)):
             temp = Box(thing[i])
             rankings = RankedPlayer(temp)
             rankings.append(temp)
@@ -129,7 +129,7 @@ class Client:
 
         thing = data.items # sorry
         locations = []
-        for i in thing:
+        for i in range(len(thing)):
             temp = Box(thing[i])
             temp = Location(temp)
             locations.append(temp)
@@ -172,7 +172,7 @@ class Client:
             raise Timeout()
         thing = data.items # sorry
         members = []
-        for i in thing:
+        for i in range(len(thing)):
             temp = Box(thing[i])
             temp = Player(temp)
             members.append(temp)
@@ -191,7 +191,7 @@ class Client:
             raise Timeout()
         thing = data.items # sorry
         logItems = []
-        for i in thing:
+        for i in range(len(thing)):
             temp = Box(thing[i])
             temp = WarlogItem(temp)
             logItems.append(temp)
