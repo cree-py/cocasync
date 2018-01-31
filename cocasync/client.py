@@ -167,11 +167,29 @@ class Client:
         clan = Clan(data)
         return clan
 
-        # TODO Clan members
+    # TODO Clan members
+    async def getClanMembers(self, clantag):
+        try:
+            async with self.session.get(f'{self.baseUrl}clans/{clantag}/members', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+        thing = data.items # sorry
+        members = []
+        for i in thing:
+            temp = Box(thing[i])
+            members = Player(temp)
+            members.append(temp)
+        return members
 
-        # TODO Clan warlog
+    # TODO Clan warlog
 
-        # TODO Clan currentwar
+    # TODO Clan currentwar
 
 class Player(Box):
 
