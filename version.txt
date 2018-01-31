@@ -1,1 +1,1 @@
-0.0.1
+setup.py and __init__.py
