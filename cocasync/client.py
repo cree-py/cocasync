@@ -26,14 +26,11 @@ class Client:
 
         try:
             async with self.session.get(f'{self.baseUrl}players/%23{tag}', timeout=self.timeout, headers=self.headers) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                elif 500 > resp.status > 400:
-                    raise HTTPError(resp.status)
-                else:
-                    raise Error()
+                data = await resp.json()
         except asyncio.TimeoutError:
             raise Timeout()
+        except Exception:
+            raise InvalidArg('tag')
 
         data = Box(data)
         player = Player(data)
