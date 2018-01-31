@@ -29,8 +29,6 @@ class Client:
 
         tag = tag.strip("#")
         tag = tag.upper()
-        # if not self.check_tag(tag):
-        #     raise InvalidArg('tag')
 
         try:
             async with self.session.get(f'{self.baseUrl}players/%23{tag}', timeout=self.timeout, headers=self.headers) as resp:
@@ -149,8 +147,6 @@ class Client:
 
         tag = tag.strip("#")
         tag = tag.upper()
-        # if not self.check_tag(tag):
-        #     raise InvalidArg('tag')
 
         try:
             async with self.session.get(f'{self.baseUrl}clans/%23{tag}', timeout=self.timeout, headers=self.headers) as resp:
