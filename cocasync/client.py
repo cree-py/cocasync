@@ -115,6 +115,8 @@ class Client:
             rankings.append(temp)
         return rankings
 
+    # TODO other location shit i completely forgot about
+
     async def getLocations(self):
         try:
             async with self.session.get(f'{self.baseUrl}locations', timeout=self.timeout, headers=self.headers) as resp:
