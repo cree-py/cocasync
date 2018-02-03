@@ -115,8 +115,6 @@ class Client:
             rankings.append(temp)
         return rankings
 
-    # TODO other location shit i completely forgot about
-
     async def getLocations(self):
         try:
             async with self.session.get(f'{self.baseUrl}locations', timeout=self.timeout, headers=self.headers) as resp:
@@ -137,6 +135,30 @@ class Client:
             locations.append(temp)
         return locations
 
+    async def getLocation(self, location):
+        try:
+            async with self.session.get(f'{self.baseUrl}locations/{location}', timeout=self.timeout, headers=self.headers) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                elif 500 > resp.status > 400:
+                    raise HTTPError(resp.status)
+                else:
+                    raise Error()
+        except asyncio.TimeoutError:
+            raise Timeout()
+
+        data = Box(data)
+        location = Location(data)
+        return location
+
+    # TODO location clan rankings
+
+    # TODO location player rankings
+
+    # TODO location builder clan rankings
+
+    # TODO location builder player rankings
+    
     # TODO implement clan search
 
     async def getClan(self, tag=None):

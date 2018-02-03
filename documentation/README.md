@@ -12,6 +12,7 @@ To update cocasync use the -U flag (`pip install -U cocasync` or `python -m pip 
 If you need help with anything, feel free to join our [discord server](https://discord.gg/GZ8jUpA) to contact us.
 
 ## Table of Contents
+TODO
 
 ## Legal
 ```
