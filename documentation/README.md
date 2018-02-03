@@ -12,7 +12,24 @@ To update cocasync use the -U flag (`pip install -U cocasync` or `python -m pip 
 If you need help with anything, feel free to join our [discord server](https://discord.gg/GZ8jUpA) to contact us.
 
 ## Table of Contents
-TODO
+| Name | Link |
+|------|------|
+| Achievement | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/ACHIEVEMENT.md) |
+| Clan | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/CLAN.md) |
+| Client | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/CLIENT.md) |
+| GenericIdObject | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/GENERICIDOBJECT.md) |
+| Hero | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/HERO.md) |
+| League | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/LEAGUE.md) |
+| LegendStatistics | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/LEGENDSTATISTICS.md) |
+| Location | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/LOCATION.md) |
+| Player | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/PLAYER.md) |
+| RankedPlayer | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/RANKEDPLAYER.md) |
+| SeasonStatistic | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/SeasonStatistic.md) |
+| Spell | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/SPELL.md) |
+| Troop | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/TROOP.md) |
+| UrlList | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/URLLIST.md) |
+| WarlogItem | [Click here](https://github.com/cree-py/cocasync/blob/master/documentation/WARLOGITEM.md) |
+
 
 ## Legal
 ```
